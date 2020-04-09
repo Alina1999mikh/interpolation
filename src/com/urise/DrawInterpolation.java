@@ -42,11 +42,11 @@ public class DrawInterpolation extends AbstractInterpolation {
             List<Double> listStoragePointY = new ArrayList<>();
             listStoragePointX.add(storage.yxIndex[i]);
             listStoragePointY.add(storage.yxValue[i]);
-            chart.addSeries("point" + i+1, listStoragePointX, listStoragePointY);
+            chart.addSeries("point " + (i+1), listStoragePointX, listStoragePointY);
         }
     }
 
-    private XYSeries drawInterpolation(InterpolationPolynomial storage, XYSeries series, XYChart chart) {
+    private void drawInterpolation(InterpolationPolynomial storage, XYSeries series, XYChart chart) {
         List<Double> xDataInterpolation = new ArrayList<>();
         List<Double> yDataInterpolation = new ArrayList<>();
         for (double k = scale[0]; k < scale[1]; k = (k + 0.01)) {
@@ -56,7 +56,6 @@ public class DrawInterpolation extends AbstractInterpolation {
         series.setMarker(SeriesMarkers.NONE);
         series = chart.addSeries("y= interpolation", xDataInterpolation, yDataInterpolation);
         series.setMarker(SeriesMarkers.NONE);
-        return series;
     }
 
     private XYSeries drawFunction(InterpolationPolynomial storage, XYChart chart) {
